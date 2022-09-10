@@ -1,19 +1,19 @@
 import './App.css';
 import Navbar from './components/Navbar';
 import TextForm from './components/TextForm';
-// import About from './components/About';
+import About from './components/About';
 import Alert from './components/Alert';
 import React, {useState} from 'react'
 
 //importing something from react router
 
-// import {
-//   BrowserRouter as Router,
-//   // Switch,
-//   Route,
-//   //Link,
-//   Routes
-// } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  // Switch,
+  Route,
+  Link,
+  Routes
+} from "react-router-dom";
 
 
 
@@ -43,7 +43,7 @@ const toggleMode = ()=>{
        setMode('dark')
        document.body.style.backgroundColor = 'grey';
        showAlert("Dark mode has been enabled","success");
-       document.title='TextUtils - Dark Mode';
+      //  document.title='TextUtils - Dark Mode';
    }
 
    else{
@@ -51,7 +51,7 @@ const toggleMode = ()=>{
     setMode('light')
     document.body.style.backgroundColor = 'white';
     showAlert("Light mode has been enabled","success");
-    document.title='TextUtils - Light Mode';
+    // document.title='TextUtils - Light Mode';
     
     // for popup in tab.............
 
@@ -68,7 +68,7 @@ const toggleMode = ()=>{
   return (
    <>
 
-   {/* <Router> */}
+   <Router>
     {/* multiple use of props */}
    <Navbar  title="MyText" aboutText="About us" mode={mode} toggleMode={toggleMode}/>
 
@@ -81,18 +81,20 @@ const toggleMode = ()=>{
    
    <div className="container">
 
-   <TextForm showAlert={showAlert} heading="Enter the text to analyze below" mode={mode}/>
+   {/* <TextForm showAlert={showAlert} heading="Enter the text to analyze below" mode={mode}/> */}
 
-   {/* <Routes>
-          <Route exact path="/about" element={<About />} />
-          <Route exact path="/" element= {<TextForm showAlert={showAlert} heading="Enter the text to analyze below" mode={mode}/>} />
-   </Routes> */}
+   <Routes>
+          <Route exact path="/about" element={<About mode={mode}/>} />
+          <Route exact path="/" element= {<TextForm showAlert={showAlert} heading="Try textutils Word counter, Character counter, Remove extra spaces" mode={mode}/>} />
+   </Routes>
 
     </div>
-   {/* </Router> */}
+   </Router>
    </>
     
   );
 }
 
 export default App;
+
+//https://um952000.github.io/text_upload/
